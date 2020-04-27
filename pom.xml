@@ -19,7 +19,7 @@
     <java.version>1.8</java.version>
 
     <rdbc-postgresql.version>0.8.2.RELEASE</rdbc-postgresql.version>
-    <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
+    <hibernate-validator.version>6.0.18.Final</hibernate-validator.version>
     <testcontainers.version>1.14.1</testcontainers.version>
     <junit-jupiter.version>5.3.2</junit-jupiter.version>
     <mockito.version>2.24.0</mockito.version>
