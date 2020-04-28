@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import com.example.demo.storage.Contact;
 import com.example.demo.storage.ContactRepository;
+import java.time.Duration;
 import java.util.regex.Pattern;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -20,7 +21,6 @@ public class ContactService {
   /**
    * Retrieve all contact with names that matching with given filter
    *
-   * @param filter
    * @return contacts
    */
   public Flux<Contact> getAll(final Pattern filter) {

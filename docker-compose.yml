@@ -5,9 +5,11 @@ services:
     image: app-java-demo
     environment:
       - SPRING_PROFILES_ACTIVE=prod
+      - JAVA_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
     build: ./
     ports:
-      - "8080:8080"
+      - 8080:8080
+      - 5005:5005
     depends_on:
       - dbpostgresql
   dbpostgresql:

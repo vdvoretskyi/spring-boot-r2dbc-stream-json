@@ -48,7 +48,7 @@ import reactor.core.publisher.Flux;
 //TODO: refactor
 public final class Jackson2JsonArrayEncoder {
 
-  private static final byte[] ITEM_SEPARATOR = {','};
+  private static final byte[] ITEM_SEPARATOR = {',','\n'};
 
   private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -76,7 +76,7 @@ public final class Jackson2JsonArrayEncoder {
 
       return Flux.concat(
           Flux.just(new DefaultDataBufferFactory()
-              .wrap(("{\"" + collectionName + "\":[").getBytes(UTF_8))),
+              .wrap(("{\"" + collectionName + "\":[\n").getBytes(UTF_8))),
           Flux.from(inputStream)
               .skipLast(1)
               .map(v -> encodeStreamingValue(v, bufferFactory, hints, sequenceWriter,
@@ -84,9 +84,9 @@ public final class Jackson2JsonArrayEncoder {
           Flux.from(inputStream)
               .takeLast(1)
               .map(v -> encodeStreamingValue(v, bufferFactory, hints, sequenceWriter,
-                  byteBuilder, new byte[]{})),
+                  byteBuilder, new byte[]{'\n'})),
           Flux.just(new DefaultDataBufferFactory()
-              .wrap(("]}").getBytes(UTF_8)))
+              .wrap(("]}\n").getBytes(UTF_8)))
       );
     } catch (IOException ex) {
       return Flux.error(ex);

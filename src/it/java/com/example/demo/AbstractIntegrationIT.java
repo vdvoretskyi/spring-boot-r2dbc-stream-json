@@ -7,7 +7,6 @@ import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWeb
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.r2dbc.connectionfactory.init.ConnectionFactoryInitializer;
 import org.springframework.data.r2dbc.connectionfactory.init.ResourceDatabasePopulator;
@@ -24,7 +23,6 @@ public class AbstractIntegrationIT {
   public static class InitializerConfiguration {
 
     @Bean
-    @Primary
     public ConnectionFactoryInitializer initializer(final ConnectionFactory connectionFactory) {
       logger.info("init test db");
 
